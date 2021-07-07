@@ -32,7 +32,7 @@ substThms aa nts =
        ; subst_open_vars       <- mapM (local . subst_open_var aa) nts
        ; subst_spec_recs       <- mapM (local . subst_spec_rec aa) nts
        ; subst_specs           <- mapM (local . subst_spec aa) nts
-       ; subst_substs          <- mapM (local . subst_subst aa) nts
+    --    ; subst_substs          <- mapM (local . subst_subst aa) nts
        ; return $ printf "Ltac %s ::= auto with %s %s; tauto.\n\
                          \Ltac %s ::= autorewrite with %s.\n\
                          \\n"
@@ -50,7 +50,7 @@ substThms aa nts =
                   concat subst_open_vars ++
                   concat subst_spec_recs ++
                   concat subst_specs ++
-                  concat subst_substs ++
+                  -- concat subst_substs ++
                   concat subst_close_open_recs ++
                   concat subst_close_opens ++
                   (concat $ concat subst_constrs) ++
